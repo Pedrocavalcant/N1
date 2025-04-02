@@ -6,7 +6,16 @@
     <title>N1 - INVITE</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Garante que a imagem do poster tenha o mesmo tamanho do vídeo */
+        /* Estilização do container */
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            display: none; /* Oculta inicialmente */
+        }
+
+        /* Poster ocupa a tela toda */
         .poster {
             position: absolute;
             top: 0;
@@ -14,82 +23,72 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: none; /* Oculta inicialmente */
         }
 
-        .video-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px; /* Ajuste conforme necessário */
-            margin: auto;
-        }
-
+        /* Estilização do vídeo */
         video {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        /* Mensagem para ativar o áudio */
-        #audioMessage {
+        /* Botão para iniciar o vídeo */
+        .start-button {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.7);
+            background-color: #ff6600;
             color: white;
-            padding: 10px 20px;
-            font-size: 16px;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
             border-radius: 5px;
-            display: none;
             cursor: pointer;
+            z-index: 10;
         }
     </style>
 </head>
 <body>
 
-    <div class="video-container">
+    <!-- Botão de início -->
+    <button id="startButton" class="start-button">Iniciar Vídeo</button>
+
+    <div class="video-container" id="videoContainer">
         <!-- Imagem do poster -->
         <img id="posterImg" src="midia/Design.jpg" alt="Prévia do vídeo" class="poster">
 
         <!-- Vídeo -->
-        <video id="meuVideo" src="midia/teste.mp4" controls autoplay playsinline muted></video>
-
-        <!-- Mensagem para ativar o áudio -->
-        <div id="audioMessage">Clique para ativar o áudio</div>
+        <video id="meuVideo" src="midia/teste.mp4" controls playsinline></video>
     </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             let video = document.getElementById("meuVideo");
             let poster = document.getElementById("posterImg");
-            let audioMessage = document.getElementById("audioMessage");
+            let startButton = document.getElementById("startButton");
+            let videoContainer = document.getElementById("videoContainer");
 
-            // Quando o vídeo começar a tocar, esconde o poster
+            // Espera o usuário clicar para iniciar o vídeo
+            startButton.addEventListener("click", function () {
+                videoContainer.style.display = "block"; // Mostra o vídeo
+                video.muted = false; // Habilita o áudio
+                video.volume = 1.0;
+                video.play().catch(error => console.log("Erro ao iniciar vídeo:", error));
+
+                startButton.style.display = "none"; // Esconde o botão
+            });
+
+            // Quando o vídeo começa, some o poster
             video.addEventListener("play", function () {
                 poster.style.display = "none";
-                video.style.display = "block"; // Garante que o vídeo apareça
             });
 
-            // Quando o vídeo terminar, exibe o poster e oculta o vídeo
+            // Quando o vídeo termina, exibe o poster novamente
             video.addEventListener("ended", function () {
-                video.style.display = "none";  // Oculta o vídeo
-                poster.style.display = "block"; // Mostra a imagem do poster
-            });
-
-            // Inicia o vídeo automaticamente (mutado)
-            video.play().catch(error => {
-                console.log("Autoplay bloqueado:", error);
-            });
-
-            // Exibe a mensagem para ativar o áudio
-            audioMessage.style.display = "block";
-
-            // Quando o usuário clicar, ativa o áudio
-            audioMessage.addEventListener("click", function () {
-                video.muted = false;
-                video.volume = 1.0;
-                audioMessage.style.display = "none"; // Esconde a mensagem
+                poster.style.display = "block"; // Mostra o poster
+                video.style.display = "none"; // Oculta o vídeo
+                startButton.style.display = "block"; // Exibe o botão novamente
             });
         });
     </script>
