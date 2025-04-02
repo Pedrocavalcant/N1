@@ -1,0 +1,22 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black; /* Fundo preto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Faz o body ocupar 100% da tela */
+    width: 100%;
+}
+
+/* Estilização do vídeo */
+video {
+    max-width: 90%;  /* Evita que o vídeo ultrapasse as bordas laterais */
+    max-height: 90vh; /* Mantém o vídeo dentro da altura da tela */
+    border-radius: 8px; /* Borda arredondada opcional */
+}
