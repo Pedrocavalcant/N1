@@ -3,31 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Generator</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <title>N1 - INVITE</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        body, html {
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #f0f0f0;
-            margin: 0;
+        /* Garante que a imagem do poster tenha o mesmo tamanho do vídeo */
+        .poster {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; /* Oculta inicialmente */
         }
-        canvas {
-            border: 2px solid #000;
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px; /* Ajuste conforme necessário */
+            margin: auto;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Mensagem para ativar o áudio */
+        #audioMessage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            display: none;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <canvas id="qr-code"></canvas>
+
+    <div class="video-container">
+        <!-- Imagem do poster -->
+        <img id="posterImg" src="midia/Design.jpg" alt="Prévia do vídeo" class="poster">
+
+        <!-- Vídeo -->
+        <video id="meuVideo" src="midia/teste.mp4" controls autoplay playsinline muted></video>
+
+        <!-- Mensagem para ativar o áudio -->
+        <div id="audioMessage">Clique para ativar o áudio</div>
+    </div>
 
     <script>
-        const qr = new QRious({
-            element: document.getElementById('qr-code'),
-            value: window.location.origin + 'N1/video.html', // Link para a página de vídeo
-            size: 250
+        document.addEventListener("DOMContentLoaded", function() {
+            let video = document.getElementById("meuVideo");
+            let poster = document.getElementById("posterImg");
+            let audioMessage = document.getElementById("audioMessage");
+
+            // Quando o vídeo começar a tocar, esconde o poster
+            video.addEventListener("play", function () {
+                poster.style.display = "none";
+                video.style.display = "block"; // Garante que o vídeo apareça
+            });
+
+            // Quando o vídeo terminar, exibe o poster e oculta o vídeo
+            video.addEventListener("ended", function () {
+                video.style.display = "none";  // Oculta o vídeo
+                poster.style.display = "block"; // Mostra a imagem do poster
+            });
+
+            // Inicia o vídeo automaticamente (mutado)
+            video.play().catch(error => {
+                console.log("Autoplay bloqueado:", error);
+            });
+
+            // Exibe a mensagem para ativar o áudio
+            audioMessage.style.display = "block";
+
+            // Quando o usuário clicar, ativa o áudio
+            audioMessage.addEventListener("click", function () {
+                video.muted = false;
+                video.volume = 1.0;
+                audioMessage.style.display = "none"; // Esconde a mensagem
+            });
         });
     </script>
+
 </body>
 </html>
