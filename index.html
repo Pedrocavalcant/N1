@@ -6,13 +6,13 @@
     <title>N1 - INVITE</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Estilização do container */
+        /* Centralizar o vídeo */
         .video-container {
             position: relative;
             width: 100%;
             max-width: 800px;
             margin: auto;
-            display: none; /* Oculta inicialmente */
+            display: none; /* Oculto inicialmente */
         }
 
         /* Poster ocupa a tela toda */
@@ -32,20 +32,34 @@
             display: block;
         }
 
-        /* Botão para iniciar o vídeo */
+        /* Botão personalizado */
         .start-button {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            background-color: #ff6600;
+            background-color: black;
             color: white;
-            border: none;
+            border: 2px solid black;
             padding: 15px 30px;
             font-size: 18px;
             border-radius: 5px;
             cursor: pointer;
             z-index: 10;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Mudança de cor ao passar o mouse */
+        .start-button:hover {
+            background-color: white;
+            color: black;
+        }
+
+        /* Mudança ao clicar */
+        .start-button:active {
+            background-color: white;
+            color: black;
+            transform: translate(-50%, -50%) scale(0.95);
         }
     </style>
 </head>
