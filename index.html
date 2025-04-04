@@ -7,93 +7,81 @@
     <title>N1 - INVITE</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Reset básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        /* Centralizar o vídeo */
+        .video-container {
+            position: fixed;
+            width: 100%;
+            max-width: 800px;
+            margin: auto;
+            display: none; /* Oculto inicialmente */
+            left: 5%;
+        }
 
-body {
-    background-color: black; /* Fundo preto */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Faz o body ocupar 100% da tela */
-    width: 100%;
-}
+        /* Estilização do vídeo */
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
 
-/* Estilização do vídeo */
-video {
-    max-width: 90%;  /* Evita que o vídeo ultrapasse as bordas laterais */
-    max-height: 90vh; /* Mantém o vídeo dentro da altura da tela */
-    border-radius: 8px; /* Borda arredondada opcional */
-    width: 100%;
-    height: auto;
-    display: block;
-}
+        /* Botão personalizado */
+        .start-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            color: black;
+            border: 2px solid black;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold; /* Negrito */
+            text-transform: uppercase; /* CAPS LOCK */
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease-in-out;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-/* Centralizar o vídeo */
-.video-container {
-    position: fixed;
-    width: 100%;
-    max-width: 800px;
-    margin: auto;
-    display: none; /* Oculto inicialmente */
-    margin: auto;
-    align-items: center;
-    justify-content: center;
-    left: 5%;
-}
-
-/* Botão personalizado */
-.start-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: black;
-    border: 7px solid white;
-    border-radius: 50%;
-    cursor: pointer;
-    width: 100px;
-    height: 100px;
-}
-
-/*div no meio do botao*/
-   .center-button {
-    position: absolute;
-    top: 50%;
-    left: 55%;
-    transform: translate(-50%, -50%) rotate(90deg); /* Centraliza e inclina */
-    width: 40px;
-    height: 40px;
-    background-color: white;
-    clip-path: polygon(50% 5%, 95% 95%, 5% 95%); /* Cor do triângulo */
-    border-radius: 10px;
-}
+        /*div no meio do botao*/
+           .center-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(90deg); /* Centraliza e inclina */
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            clip-path: polygon(50% 5%, 95% 95%, 5% 95%); /* Cor do     triângulo */
+            border-radius: 10px;
+        }
 
 
-/* Mudança ao clicar */
-.start-button:active {
-    transform: translate(-50%, -50%) scale(0.95);
-}
+        /* Mudança ao clicar */
+        .start-button:active {
+            transform: translate(-50%, -50%) scale(0.95);
+        }
 
-.button-text{
-    color: white;
-    position: absolute;
-    left: 34%;
-    font-size: 20px;
-    font-family: 'Balgin', sans-serif;
-    margin-bottom: 200px;
-}
-
+        .button-text{
+        color: white;
+        position: absolute;
+        left: 41.5%;
+        font-size: 20px;
+        font-family: 'Balgin', sans-serif;
+        margin-bottom: 200px;
+        }
     </style>
 </head>
 <body>
 
     <!-- Botão de início -->
-    <button id="startButton" class="start-button"><div class="center-button"></div></button>
+    <button id="startButton" class="start-button"><div class="center-button">CLIQUE AQUI</div></button>
 
     <div class="video-container" id="videoContainer">
         <!-- Imagem do poster -->
