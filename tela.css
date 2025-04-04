@@ -33,7 +33,7 @@ video {
     margin: auto;
     align-items: center;
     justify-content: center;
-    left: 5%;
+    left: 30%;
 }
 
 /* Botão personalizado */
@@ -50,6 +50,10 @@ video {
     height: 100px;
 }
 
+    .start-button:hover{
+     background-color: white;
+    }
+
 /*div no meio do botao*/
    .center-button {
     position: absolute;
@@ -63,6 +67,10 @@ video {
     border-radius: 10px;
 }
 
+    .center-button:hover{
+        background-color: black;
+    }
+
 
 /* Mudança ao clicar */
 .start-button:active {
@@ -72,8 +80,9 @@ video {
 .button-text{
     color: white;
     position: absolute;
-    left: 34%;
+    left: 45.5%;
     font-size: 20px;
     font-family: 'Balgin', sans-serif;
     margin-bottom: 200px;
 }
+

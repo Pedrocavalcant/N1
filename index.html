@@ -5,88 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="midia/favicon-32x32.png">
     <title>N1 - INVITE</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        /* Centralizar o vídeo */
-        .video-container {
-            position: fixed;
-            width: 100%;
-            max-width: 800px;
-            margin: auto;
-            display: none; /* Oculto inicialmente */
-            left: 5%;
-        }
+    <link rel="stylesheet" href="tela.css">
+    <link rel="stylesheet" 
+    href="style.css" media="screen and (max-width: 580px)">
 
-        /* Estilização do vídeo */
-        video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
+    <link href="https://fonts.cdnfonts.com/css/balgin" rel="stylesheet">
 
-        /* Botão personalizado */
-        .start-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            color: black;
-            border: 2px solid black;
-            padding: 15px 30px;
-            font-size: 18px;
-            font-weight: bold; /* Negrito */
-            text-transform: uppercase; /* CAPS LOCK */
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease-in-out;
-            width: 100px;
-            height: 100px;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /*div no meio do botao*/
-           .center-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(90deg); /* Centraliza e inclina */
-            width: 40px;
-            height: 40px;
-            background-color: white;
-            clip-path: polygon(50% 5%, 95% 95%, 5% 95%); /* Cor do     triângulo */
-            border-radius: 10px;
-        }
-
-
-        /* Mudança ao clicar */
-        .start-button:active {
-            transform: translate(-50%, -50%) scale(0.95);
-        }
-
-        .button-text{
-        color: white;
-        position: absolute;
-        left: 41.5%;
-        font-size: 20px;
-        font-family: 'Balgin', sans-serif;
-        margin-bottom: 200px;
-        }
-    </style>
 </head>
 <body>
 
+    <div class="button-text">CLIQUE AQUI</div>
     <!-- Botão de início -->
-    <button id="startButton" class="start-button"><div class="center-button">CLIQUE AQUI</div></button>
+    <button id="startButton" class="start-button"><div class="center-button"></div></button>
 
     <div class="video-container" id="videoContainer">
-        <!-- Imagem do poster -->
-        <img id="posterImg" src="midia/Design.jpg" alt="Prévia do vídeo" class="poster">
-
         <!-- Vídeo -->
         <video id="meuVideo" src="midia/N1_LANCAMENTO .mp4" controls playsinline loop></video>
     </div>
